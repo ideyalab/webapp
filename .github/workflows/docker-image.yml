@@ -37,8 +37,10 @@ jobs:
         run: sudo docker rm  test
       - name: run docker container
         run: sudo docker run -it -d --name test -p 8080:8080 ${{ secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_REPO }}:latest
-      - name: Docker deploy
-        run: sudo ./deploy.sh
+      - name: ssh to ubuntu
+        run: sudo ssh -i "test" ubuntu@44.206.253.49
+      - name: deploy sh
+        run: sudo sh depoly.sh
   build-docker-pull:
     name: Publish to Docker pull
     runs-on: self-hosted
