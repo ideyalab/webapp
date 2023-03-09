@@ -21,7 +21,7 @@ resource "aws_eks_cluster" "devopsthehardway-eks" {
  }
 
  depends_on = [
-  arn:aws:iam::aws:policy/AmazonEKSClusterPolicy,
+  arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
  ]
 }
  resource "aws_eks_node_group" "worker-node-group" {
@@ -40,6 +40,6 @@ resource "aws_eks_cluster" "devopsthehardway-eks" {
   depends_on = [
    arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy,
    arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly,
-   arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy,
+   arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
   ]
  }
