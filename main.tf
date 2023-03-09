@@ -14,20 +14,20 @@ provider "aws" {
 
 resource "aws_eks_cluster" "devopsthehardway-eks" {
  name = "terrafrom-cluster"
- role_arn = aws_iam_role.eks-iam-role.arn
+ role_arn = "arn:aws:iam::269390828189:role/eks_cluster"
 
  vpc_config {
   subnet_ids = [ "subnet-02a4a455d98d344a0", "subnet-0c1da9fc8ca557fbc" ]
  }
 
  depends_on = [
-  aws_iam_role.eks-iam-role,
+  "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
  ]
 }
  resource "aws_eks_node_group" "worker-node-group" {
   cluster_name  = aws_eks_cluster.devopsthehardway-eks.name
   node_group_name = "devopsthehardway-workernodes"
-  node_role_arn  = "arn:aws:iam::269390828189:role/eks_cluster"
+  node_role_arn  = "arn:aws:iam::269390828189:role/workernode"
   subnet_ids   = [ "subnet-02a4a455d98d344a0", "subnet-0c1da9fc8ca557fbc"]
   instance_types = ["t3.medium"]
 
@@ -38,8 +38,8 @@ resource "aws_eks_cluster" "devopsthehardway-eks" {
   }
 
   depends_on = [
-   aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
-   aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
-   #aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly,
+   arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy,
+   arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly,
+   arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy,
   ]
  }
