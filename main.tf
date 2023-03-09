@@ -19,7 +19,7 @@ resource "aws_eks_cluster" "devopsthehardway-eks" {
  vpc_config {
   subnet_ids = [ "subnet-02a4a455d98d344a0", "subnet-0c1da9fc8ca557fbc" ]
  }
-
+}
  resource "aws_eks_node_group" "worker-node-group" {
   cluster_name  = aws_eks_cluster.devopsthehardway-eks.name
   node_group_name = "devopsthehardway-workernodes"
