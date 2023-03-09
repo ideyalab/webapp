@@ -66,13 +66,3 @@ jobs:
            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
            aws-region: us-east-1
-
-      # Deploy to AWS CloudFormation
-       - name: Deploy to AWS CloudFormation
-         uses: aws-actions/aws-cloudformation-github-deploy@v1
-         with:
-           name: github-actions
-           template: fargate.yml
-           capabilities: CAPABILITY_NAMED_IAM
-           no-fail-on-empty-changeset: "1"
-           parameter-overrides: "Image=457696123704.dkr.ecr.us-east-1.amazonaws.com/bitbucket:${{ github.run_number }}"
