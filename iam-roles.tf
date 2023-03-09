@@ -1,15 +1,4 @@
-terraform {
- required_providers {
-  aws = {
-   source = "hashicorp/aws"
-  }
- }
-}
-provider "aws" {
-  region     = "us-east-1"
-  access_key = "AKIAT5OHR2KO53QOYPHP"
-  secret_key = "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"
-}
+
 resource "aws_iam_role" "eks-iam-role" {
  name = "devopsthehardway-eks-iam-role"
 
