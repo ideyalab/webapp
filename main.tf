@@ -15,7 +15,7 @@ provider "aws" {
 resource "aws_eks_cluster" "devopsthehardway-eks" {
  name = "terrafrom-cluster"
  role_arn = "arn:aws:iam::269390828189:role/eks_cluster"
-}
+
  vpc_config {
   subnet_ids = [ "subnet-02a4a455d98d344a0", "subnet-0c1da9fc8ca557fbc" ]
  }
@@ -32,5 +32,5 @@ resource "aws_eks_cluster" "devopsthehardway-eks" {
    max_size   = 1
    min_size   = 1
   }
-
+ }
  
